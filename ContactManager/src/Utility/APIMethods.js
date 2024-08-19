@@ -6,67 +6,51 @@ import {
 } from "../UI/Model";
 
 export async function fetchContacts() {
+  let getResponse;
   try {
-    const getResponse = await axios.get("https://jsonplaceholder.typicode.com/users");
-    loadAllContactsInScreen(getResponse.data);
+    getResponse = await axios.get("https://jsonplaceholder.typicode.com/users");
   } catch (err) {
     alert(err.message);
     console.log(err);
   }
+  loadAllContactsInScreen(getResponse.data);
 }
 
-export async function addContact(form, id = undefined) {
+export async function addContact(form) {
   const userInputName = form.querySelector("#contactName").value;
   const userInputEmail = form.querySelector("#contactEmail").value;
   const userInputPhone = form.querySelector("#contactPhone").value;
-  if (id === undefined) {
-    try {
-      const postResponse = await axios.post(
-        "https://jsonplaceholder.typicode.com/users",
-        {
-          name: userInputName,
-          phone: userInputPhone,
-          email: userInputEmail,
-        }
-      );
-      addNewContactToScreen(postResponse.data);
-    } catch (err) {
-      alert(err.message);
-      console.log(err);
-    }
-  } else {
-    try {
-      await axios.patch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-        name: userInputName,
-        phone: userInputPhone,
-        email: userInputEmail,
-      });
-      addNewContactToScreen(postResponse.data);
-    } catch (err) {
-      alert(err.message);
-      console.log(err);
-    }
+  let postResponse;
+  try {
+    postResponse = await axios.post("https://jsonplaceholder.typicode.com/users", {
+      name: userInputName.trim(),
+      phone: userInputPhone.trim(),
+      email: userInputEmail.trim(),
+    });
+  } catch (err) {
+    alert(err.message);
+    console.log(err);
   }
+  addNewContactToScreen(postResponse.data);
 }
 
 export async function editContact(id, form) {
   const userInputName = form.querySelector("#contactName").value;
   const userInputEmail = form.querySelector("#contactEmail").value;
   const userInputPhone = form.querySelector("#contactPhone").value;
-  console.log(userInputEmail, userInputName, userInputPhone);
-
+  let res;
   try {
-    const res = await axios.patch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-      name: userInputName,
-      phone: userInputPhone,
-      email: userInputEmail,
+    res = await axios.patch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+      name: userInputName.trim(),
+      phone: userInputPhone.trim(),
+      email: userInputEmail.trim(),
     });
-    updateAfterDeleting(id);
-    addNewContactToScreen(res.data);
   } catch (err) {
     alert(err.message);
     console.log(err);
   }
+  updateAfterDeleting(id);
+  addNewContactToScreen(res.data);
 }
 
 export async function deleteContact(id) {

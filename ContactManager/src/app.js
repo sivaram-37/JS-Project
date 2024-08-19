@@ -32,17 +32,16 @@ addContactBtn.addEventListener("click", () => {
 
   openAddContactMenu(); // appling overlay and backdrop effect
 
-  const addingNewContactHandler = (event) => {
-    event.preventDefault();
-    closeAddContactMenu(); // removing overlay and backdrop effect
-    addContact(form); // Submit form data to server
-    console.log(form);
-    form.reset(); // clearing the form inputs. When next it is opened you get a empty input fields
-
-    form.removeEventListener("click", addingNewContactHandler);
-  };
-
-  form.addEventListener("submit", addingNewContactHandler);
+  form.addEventListener(
+    "submit",
+    (event) => {
+      event.preventDefault();
+      closeAddContactMenu(); // removing overlay and backdrop effect
+      addContact(form); // Submit form data to server
+      form.reset(); // clearing the form inputs. When next it is opened you get a empty input fields
+    },
+    { once: true }
+  );
 
   closeDispAddContact.addEventListener("click", () => {
     closeAddContactMenu(); // removing overlay and backdrop effect
@@ -67,23 +66,13 @@ list.addEventListener("click", (event) => {
 
       openAddContactMenu();
 
-      // console.log(form);
-      console.log(contact.querySelector("h3").textContent); // Check if this gives the expected name
-      console.log(contact.querySelector("p:first-of-type").textContent); // Check if this gives the expected email
-      console.log(contact.querySelector("p:last-of-type").textContent); // Check if this gives the expected phone number
-
-      const nameField = form.querySelector("#contactName");
-      const emailField = form.querySelector("#contactEmail");
-      const phoneField = form.querySelector("#contactPhone");
-      console.log(nameField, emailField, phoneField); // Ensure these are not null or undefined
-
       form.addEventListener(
         "submit",
         (event) => {
           event.preventDefault();
           closeAddContactMenu();
-          // addContact(form, id);
           editContact(id, form);
+          form.reset();
         },
         { once: true } // event listner is removed after the it is finished no need to manually disable
       );
