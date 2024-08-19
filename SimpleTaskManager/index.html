@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script src="assets/scripts/app.js" defer></script>
+  </head>
+  <body>
+    <template id="task-template">
+      <li class="task-item">
+        <h2></h2>
+        <button class="updateBtn"></button>
+        <button class="deleteBtn">Delete</button>
+      </li>
+    </template>
+
+    <div class="container">
+      <h1>Task Manager</h1>
+      <form id="taskForm">
+        <input type="text" id="taskName" placeholder="Task Name" required />
+        <button type="submit" id="addBtn">Add Task</button>
+      </form>
+    </div>
+
+    <section>
+      <ul id="tasks"></ul>
+    </section>
+  </body>
+</html>
