@@ -1,0 +1,192 @@
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  /* background-color: aqua; */
+}
+
+main {
+  margin-top: 2vh;
+  width: 50vw;
+  height: 94vh;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+header {
+  background-color: burlywood;
+  height: 7vh;
+  padding-top: 10px;
+  font-size: x-large;
+  font-weight: 800;
+  text-align: center;
+  border-radius: 8px;
+}
+
+#addContactSection {
+  position: absolute;
+  left: 32.6%;
+  bottom: 4vh;
+  height: 5vh;
+  width: 34.9vw;
+  border-radius: 8px;
+}
+
+#addContactSection #addContact {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  left: -7.6vw;
+  bottom: -1px;
+  width: 50vw;
+  height: 5vh;
+  font-weight: 800;
+  color: white;
+  background-color: orange;
+}
+
+#addContactSection #addContact:hover {
+  background-color: darkorange;
+}
+
+#dispContactSection {
+  background-color: rgb(255, 224, 224);
+  position: absolute;
+  height: 80vh;
+  width: 50vw;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 5px;
+}
+
+li {
+  border-radius: 8px;
+  border: 1px solid rgb(204, 204, 204);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+li h3 {
+  margin: 3px;
+}
+
+li p {
+  margin: 3px;
+}
+
+li #div-btn {
+  width: 12vh;
+}
+
+.btn {
+  font-weight: 600;
+  width: 100%;
+  height: 50%;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+#edit-btn {
+  background-color: #79ff79;
+}
+
+#del-btn {
+  background-color: #ff7878;
+}
+
+#edit-btn:hover {
+  background-color: #00ce00;
+  color: white;
+}
+
+#del-btn:hover {
+  background-color: #cc0000;
+  color: white;
+}
+
+#backdrop {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background: hsla(0, 0%, 0%, 0.616);
+}
+
+#backdrop.visible {
+  display: block;
+}
+
+#overlay-addContact {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  box-shadow: 0px 10px 10px rgb(194, 194, 194);
+  background: hsla(0, 0%, 96%, 0.712);
+  border-radius: 10px;
+  width: 75vh;
+  height: 60vh;
+  top: 20vh;
+  left: 30%;
+  text-align: center;
+}
+
+#overlay-addContact.visible {
+  display: block;
+}
+
+#close-btn {
+  cursor: pointer;
+  position: absolute;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: large;
+  width: 30px;
+  height: 30px;
+  right: 5px;
+  top: 5px;
+}
+
+#close-btn:hover {
+  background-color: red;
+  color: white;
+}
+
+form {
+  padding: 20px;
+}
+
+form input {
+  font-size: medium;
+  width: 85%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px rgba(182, 182, 182, 0.342);
+  border: 1px solid rgba(240, 240, 240, 0.61);
+}
+
+form #save-btn {
+  cursor: pointer;
+  font-size: x-large;
+  margin: 20px;
+  width: 35%;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px rgba(182, 182, 182, 0.342);
+  border: 3px solid rgba(255, 0, 0, 0.61);
+  background-color: #00ff00;
+}
+
+#save-btn:hover {
+  background-color: #2bff00;
+  color: white;
+}
