@@ -3,12 +3,20 @@ import axios from "axios";
 const list = document.getElementById("item-list");
 
 const showAllBreeds = (breeds) => {
-  for (const breed of breeds) {
+  // for (const breed of breeds) {
+  //   const li = document.createElement("li");
+  //   li.textContent = breed.name;
+  //   li.id = breed.id;
+  //   // list.append(li); // li is added one after another
+  //   list.prepend(li); // li is added before one another
+  // }
+  for (let i = breeds.length - 1; i >= 0; i--) {
+    const breedName = breeds[i].name;
+    const breedId = breeds[i].id;
     const li = document.createElement("li");
-    li.textContent = breed.name;
-    li.id = breed.id;
-    // list.append(li); // li is added one after another
-    list.prepend(li); // li is added before one another
+    li.textContent = breedName;
+    li.id = breedId;
+    list.append(li);
   }
 };
 

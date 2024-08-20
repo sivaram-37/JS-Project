@@ -18,17 +18,22 @@ const showDetails = async (breed) => {
   tempEl.querySelector("img").src = img.data.url;
 
   const details = img.data.breeds[0];
-  console.log(details);
+
   tempEl.querySelector("#desc").innerHTML =
     "<strong>Description : </strong>" + details.description;
+
   tempEl.querySelector("#origin").innerHTML =
     "<strong>Origin : </strong>" + details.origin;
+
   tempEl.querySelector("#weight").innerHTML =
     "<strong>Weight : </strong>" + details.weight.metric + " Kg";
+
   tempEl.querySelector("#lifespan").innerHTML =
     "<strong>Life span : </strong>" + details.life_span + " years";
+
   tempEl.querySelector("#temperament").innerHTML =
     "<strong>Temperament : </strong>" + details.temperament;
+
   show.append(tempEl);
 };
 
